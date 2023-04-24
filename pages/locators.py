@@ -28,3 +28,6 @@ class NewProxyPageLocatoros():
     NEW_PROXY_GENDER_NAME = (By.CSS_SELECTOR, 'div.block-data > span')
     NEW_PROXY_VALIDATION_LAST_NAME_FIELD = (By.CSS_SELECTOR, 'div.block-data > ui-error:nth-child(2) > div')
     NEW_PROXY_VALIDATION_NAME_FIELD = (By.CSS_SELECTOR, 'div.block-data > ui-error:nth-child(4) > div')
+    NEW_PROXY_BLOCK_NAME_CONTACT_INFO = (By.CSS_SELECTOR, '.block-field.contact-info-block > div.block-name')
+    NEW_PROXY_FIELD_NAME_TRUSTED_PERSON_PHONE_NUMBER = (By.CSS_SELECTOR, '[label="Телефон доверенного лица"] > mat-form-field > div > div > div > span > label > mat-label')
+    NEW_PROXY_PROMPT_TRUSTED_PERSONAL_PHONE_NUMBER = (By.CSS_SELECTOR, 'div.phone-block > ui-icon')

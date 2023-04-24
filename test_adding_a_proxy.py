@@ -27,9 +27,9 @@ class TestAddingProxyWithoutSigningAuthority():
         page.test_personal_gender_name()
         page.test_personal_last_name_field_validation_empty_value()
         page.test_personal_name_field_validation_empty_value()
-
-
-
+        page.test_block_contact_info()
+        page.test_name_field_trusted_person_phone_number()
+        page.test_checking_prompt_trusted_person_phone_number_field()
 
 
 
