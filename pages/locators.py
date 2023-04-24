@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 class LoginPageLocators():
     LOGIN_PAGE_LINK = 'https://delo-prod.skblab.ru/login'
     LOGIN_FIELD = (By.CSS_SELECTOR, 'input.with-icon.text')
@@ -20,3 +19,12 @@ class ProfilePageLocators():
 class NewProxyPageLocatoros():
     TITLE_NEW_PROXY_PAGE = (By.CSS_SELECTOR, 'div.section-body > div.section-title')
     NEW_PROXY_PAGE_LINK = 'https://delo-prod.skblab.ru/depositee/create'
+    NEW_PROXY_PERSONAL_DATA_NAME = (By.CSS_SELECTOR, 'div.container > corporate-depositee-create > div > form > div.section-body > div:nth-child(2) > div:nth-child(1) > .block-name')
+    NEW_PROXY_FIELD_LAST_NAME = (By.CSS_SELECTOR, '[formcontrolname=last_name] > mat-form-field > div > div> div > span > label > mat-label')
+    NEW_PROXY_FIELD_NAME = (By.CSS_SELECTOR, '[formcontrolname=name] > mat-form-field > div > div> div > span > label')
+    NEW_PROXY_FIELD_MIDDLE_NAME = (By.CSS_SELECTOR, '[formcontrolname=mdl_name] > mat-form-field > div > div> div > span > label > mat-label')
+    NEW_PROXY_FIELD_LAST_NAME_INPUT = (By.CSS_SELECTOR, '[formcontrolname=last_name] > mat-form-field > div > div > .mat-form-field-infix > input')
+    NEW_PROXY_FIELD_NAME_INPUT = (By.CSS_SELECTOR, '[formcontrolname=name] > mat-form-field > div > div> div > input')
+    NEW_PROXY_GENDER_NAME = (By.CSS_SELECTOR, 'div.block-data > span')
+    NEW_PROXY_VALIDATION_LAST_NAME_FIELD = (By.CSS_SELECTOR, 'div.block-data > ui-error:nth-child(2) > div')
+    NEW_PROXY_VALIDATION_NAME_FIELD = (By.CSS_SELECTOR, 'div.block-data > ui-error:nth-child(4) > div')
