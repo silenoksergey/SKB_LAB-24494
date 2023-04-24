@@ -105,3 +105,42 @@ class NewProxyPage(BasePage):
         prompt_trusted_person_phone_number_field = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_PROMPT_TRUSTED_PERSONAL_PHONE_NUMBER)
         prompt_text = prompt_trusted_person_phone_number_field.get_attribute("mattooltip")
         assert prompt_text == 'На этот номер телефона придет СМС/push с кодом подтверждения', f'Текст подсказки {prompt_text}, а не "На этот номер телефона придет СМС/push с кодом подтверждения"'
+
+    """Проверка отображения кнопки Подтвердить номер"""
+    def test_name_confirm_number_button(self):
+        name_confirm_number_button = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CONFIRM_NUMBER_BUTTON).text
+        assert name_confirm_number_button == 'Подтвердить номер', f'Наименование кнопки {name_confirm_number_button}, а не "Подтвердить номер"'
+
+    """Проверяем, что кнопка Подтвердить номер задизейблена"""
+    def test_disable_confirm_number_button(self):
+        disable_confirm_number_button = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CONFIRM_NUMBER_BUTTON).get_attribute("class")
+        assert disable_confirm_number_button == 'link disabled ng-star-inserted', 'Кнопка не задизейблена'
+
+    """Проверка отображения блока Полномочия"""
+    def test_block_credentials(self):
+        block_name_credentials = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_BLOCK_NAME_CREDENTIALS).text
+        assert block_name_credentials == 'Полномочия', f'Наименование блока должно быть: "Полномочия",а не {block_name_credentials}'
+
+    """Проверяем, что значение 'Просмотр и создание документов' установлено по умолчанию в списке Полномочия"""
+    def test_default_value_credentials(self):
+        default_value_credentials = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_DEFAULT_VALUE_CREDENTIALS).text
+        assert default_value_credentials == 'Просмотр и создание документов', f'По умолчанию должно быть установлено значение: "Просмотр и создание документов",а не {default_value_credentials}'
+
+    """Проверяем отображение всех значений в списке Полномочия"""
+    def test_values_credentials(self):
+        credentials_values = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_DEFAULT_VALUE_CREDENTIALS)
+        credentials_values.click()
+        credintials_first_value = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CREDINTIALS_FIRST_VALUE).text
+        assert credintials_first_value == 'Просмотр', f'Первое значение в выпадающем списке должно быть: "Просмотр",а не {credintials_first_value}'
+        credintials_second_value = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CREDINTIALS_SECOND_VALUE).text
+        assert credintials_second_value == 'Просмотр и создание документов', f'Второе значение в выпадающем списке должно быть: "Просмотр и создание документов",а не {credintials_second_value}'
+        credintials_third_value = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CREDINTIALS_THIRD_VALUE).text
+        assert credintials_third_value == 'Создание и подпись документов', f'Второе значение в выпадающем списке должно быть: "Создание и подпись документов",а не {credintials_third_value}'
+
+    """Проверка текста чек-бокса и неактивного состояния по умолчанию"""
+    def test_consent_checkbox(self):
+        consent_checkbox = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CONSENT_CHECKBOX)
+        consent_checkbox_activity = consent_checkbox.get_attribute("aria-checked")
+        assert consent_checkbox_activity == 'false', f'По умолчанию чек-бокс должен быть неактивен'
+        consent_checkbox_text = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_CONSENT_CHECKBOX_TEXT).text
+        assert consent_checkbox_text == 'Даю согласие и распоряжение на предоставление доверенному лицу доступа в интернет-банк в соответствии с указанными мной полномочиями и несу за это полную ответственность', f'Текст у чек-бокса должен быть: "Даю согласие и распоряжение на предоставление доверенному лицу доступа в интернет-банк в соответствии с указанными мной полномочиями и несу за это полную ответственность", а не {consent_checkbox_text}'

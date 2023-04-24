@@ -30,6 +30,9 @@ class TestAddingProxyWithoutSigningAuthority():
         page.test_block_contact_info()
         page.test_name_field_trusted_person_phone_number()
         page.test_checking_prompt_trusted_person_phone_number_field()
-
-
-
+        page.test_name_confirm_number_button()
+        page.test_disable_confirm_number_button()
+        page.test_block_credentials()
+        page.test_default_value_credentials()
+        page.test_values_credentials()
+        page.test_consent_checkbox()
