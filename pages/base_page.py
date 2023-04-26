@@ -17,7 +17,7 @@ class BasePage():
         self.browser.find_element(*ProfilePageLocators.ADD_USER_BUTTON).click()
 
     """Проверяем, что элемента нет на странице"""
-    def is_not_element_present(self, how, what, timeout=4):
+    def is_not_element_present(self, how, what, timeout=1):
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:

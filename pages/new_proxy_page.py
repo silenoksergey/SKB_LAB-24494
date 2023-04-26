@@ -54,35 +54,92 @@ class NewProxyPage(BasePage):
         validation_text_name_field = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_VALIDATION_NAME_FIELD).text
         assert validation_text_name_field == "Обязательно для заполнения", f'Под полем должна отображаться валидация с текстом "Обязательно для заполнения", а не {validation_text_name_field}'
 
-    # """"Проверяем, что после ввода одного символа в поле Фамилия не сработала валидация"""
-    # def test_last_name_field_no_validation_at_single_characters(self):
-    #     last_name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_LAST_NAME_INPUT)
-    #     last_name_field_input.send_keys(self.cyrillic_letter_generation(1))
-    #     assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_VALIDATION_LAST_NAME_FIELD), \
-    #         "Сработала валидация при вводе одного символа"
-    #
-    #
-    #
-    # """"Проверяем, что после ввода пятидесяти символов в поле Фамилия не сработала валидация"""
-    # def test_last_name_field_no_validation_at_fifty_characters(self):
-    #     last_name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_LAST_NAME_INPUT)
-    #     last_name_field_input.send_keys(self.cyrillic_letter_generation(50))
-    #     assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_VALIDATION_LAST_NAME_FIELD), \
-    #         "Сработала валидация при вводе пятидесяти символов"
-    #
-    #
-    #
+    """"Проверяем, что после ввода одного символа в поле Фамилия не сработала валидация"""
+    def test_last_name_field_no_validation_at_single_characters(self):
+        last_name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_LAST_NAME_INPUT)
+        last_name_field_input.send_keys(self.cyrillic_letter_generation(1))
+        assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_LAST_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе одного символа"
+        last_name_field_input.clear()
+
+    """"Проверяем, что после ввода пятидесяти символов в поле Фамилия не сработала валидация"""
+    def test_last_name_field_no_validation_at_fifty_characters(self):
+        last_name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_LAST_NAME_INPUT)
+        last_name_field_input.clear()
+        last_name_field_input.send_keys(self.cyrillic_letter_generation(50))
+        assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_LAST_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе пятидесяти символов"
+        last_name_field_input.clear()
+
     """"Проверяем, что после ввода пятидесяти одного символа в поле Фамилия сработала валидация"""
+    def test_last_name_field_validation_at_fifty_one_characters(self):
+        last_name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_LAST_NAME_INPUT)
+        last_name_field_input.clear()
+        last_name_field_input.send_keys(self.cyrillic_letter_generation(51))
+        assert self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_LAST_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе пятидесяти одного символа"
+        last_name_field_input.clear()
+
 
     """"Проверяем, что после ввода одного символа в поле Имя не сработала валидация"""
+    def test_name_field_no_validation_at_single_characters(self):
+        name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_NAME_INPUT)
+        name_field_input.clear()
+        name_field_input.send_keys(self.cyrillic_letter_generation(1))
+        assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе одного символа"
+        name_field_input.clear()
+
 
     """"Проверяем, что после ввода пятидесяти символов в поле Имя не сработала валидация"""
+    def test_name_field_no_validation_at_fifty_characters(self):
+        name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_NAME_INPUT)
+        name_field_input.clear()
+        name_field_input.send_keys(self.cyrillic_letter_generation(50))
+        assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе пятидесяти символов"
+        name_field_input.clear()
 
     """"Проверяем, что после ввода пятидесяти одного символа в поле Имя сработала валидация"""
+    def test_name_field_validation_at_fifty_one_characters(self):
+        name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_NAME_INPUT)
+        name_field_input.clear()
+        name_field_input.send_keys(self.cyrillic_letter_generation(51))
+        assert self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе пятидесяти символов"
+        name_field_input.clear()
+
+    """"Проверяем, что после ввода одного символа в поле Отчество не сработала валидация"""
+
+    def test_middle_name_field_no_validation_at_single_characters(self):
+        name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_MIDDLE_NAME_INPUT)
+        name_field_input.clear()
+        name_field_input.send_keys(self.cyrillic_letter_generation(1))
+        assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_MIDDLE_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе одного символа"
+        name_field_input.clear()
 
     """"Проверяем, что после ввода пятидесяти символов в поле Отчество не сработала валидация"""
 
-    """"Проверяем, что после ввода пятидесяти одного символа в Отчество Имя сработала валидация"""
+    def test_middle_name_field_no_validation_at_fifty_characters(self):
+        name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_MIDDLE_NAME_INPUT)
+        name_field_input.clear()
+        name_field_input.send_keys(self.cyrillic_letter_generation(50))
+        assert self.is_not_element_present(*NewProxyPageLocatoros.NEW_PROXY_MIDDLE_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе пятидесяти символов"
+        name_field_input.clear()
+
+    """"Проверяем, что после ввода пятидесяти одного символа в поле Отчество сработала валидация"""
+
+    def test_middle_name_field_validation_at_fifty_one_characters(self):
+        name_field_input = self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_FIELD_MIDDLE_NAME_INPUT)
+        name_field_input.clear()
+        name_field_input.send_keys(self.cyrillic_letter_generation(51))
+        assert self.browser.find_element(*NewProxyPageLocatoros.NEW_PROXY_MIDDLE_NAME_FIELD_VALIDATION_MANY_LATTERS), \
+            "Сработала валидация при вводе пятидесяти символов"
+        name_field_input.clear()
+
+
 
     """Проверка отображения блока Пол"""
     def test_personal_gender_name(self):
